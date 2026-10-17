@@ -192,6 +192,9 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px
 .pass.scheduled .tags span{background:#1E2A45;color:#C9D2E3}
 .pass.scheduled .route .dash{border-color:var(--line)}
 .pass.scheduled .route .dash svg{fill:var(--go)}
+.pass.live{border:1px solid rgba(244,181,63,.6)}
+.pass a.repo{justify-self:start;font:600 13px/1 var(--mono);letter-spacing:.04em;color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(244,181,63,.5);padding-bottom:3px}
+.pass a.repo:hover{border-bottom-color:var(--amber)}
 .pass.scheduled .barcode{background:repeating-linear-gradient(90deg,var(--line) 0 2px,transparent 2px 5px)}
 @media (max-width:820px){.passes{grid-template-columns:1fr}}
 @media (max-width:440px){.pass{grid-template-columns:1fr}.stub{border-left:0;border-top:2px dashed #C9C2AF}.stub::before,.stub::after{display:none}}
@@ -379,7 +382,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <section id="projects">
   <div class="wrap">
-    <div class="sec-head"><div class="eyebrow">Boarding passes</div><h2>Selected work</h2><p>Production work from client projects, plus the DevOps builds on the schedule.</p></div>
+    <div class="sec-head"><div class="eyebrow">Boarding passes</div><h2>Selected work</h2><p>Production work from client projects, plus the DevOps builds on my GitHub.</p></div>
     <div class="passes">
       <article class="pass">
         <div class="pass-main">
@@ -414,15 +417,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <div class="stub"><dl><div><dt>GATE</dt><dd>E5</dd></div><div><dt>CLASS</dt><dd>Security</dd></div><div><dt>STATUS</dt><dd>Live</dd></div></dl><div class="barcode" aria-hidden="true"></div></div>
       </article>
 
-      <article class="pass scheduled">
+      <article class="pass scheduled live">
         <div class="pass-main">
-          <div class="pass-top"><span>DevOps build · GitHub</span><span>Scheduled</span></div>
-          <div class="route"><span>BSM</span><span class="dash"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></span><span>K8S</span></div>
-          <h3>Baggage message monitor</h3>
-          <p>A containerized service that parses sample IATA baggage messages and shows flow health in Grafana, deployed to Kubernetes on AWS with Terraform and a GitHub Actions pipeline.</p>
-          <div class="tags"><span>Docker</span><span>Kubernetes</span><span>Terraform</span><span>GitHub Actions</span><span>Grafana</span></div>
+          <div class="pass-top"><span>DevOps project · GitHub</span><span>3-tier</span></div>
+          <div class="route"><span>SHELL</span><span class="dash"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></span><span>K8S</span></div>
+          <h3>BagTrace baggage tracker</h3>
+          <p>A 3-tier app that parses IATA BSM messages, deployed five ways: shell scripts, Ansible roles, Terraform on AWS (VPC, ALB, bastion), Docker Compose and Kubernetes, with GitHub Actions CI.</p>
+          <div class="tags"><span>Terraform</span><span>Ansible</span><span>Kubernetes</span><span>Docker</span><span>GitHub Actions</span></div>
+          <a class="repo" href="https://github.com/RavindraSurathu/bagtrace-devops" target="_blank" rel="noopener">View the code on GitHub ↗</a>
         </div>
-        <div class="stub"><dl><div><dt>GATE</dt><dd>B4</dd></div><div><dt>CLASS</dt><dd>DevOps</dd></div><div><dt>STATUS</dt><dd style="color:var(--go)">Building</dd></div></dl><div class="barcode" aria-hidden="true"></div></div>
+        <div class="stub"><dl><div><dt>GATE</dt><dd>B4</dd></div><div><dt>CLASS</dt><dd>DevOps</dd></div><div><dt>STATUS</dt><dd style="color:var(--go)">Live</dd></div></dl><div class="barcode" aria-hidden="true"></div></div>
       </article>
     </div>
   </div>
