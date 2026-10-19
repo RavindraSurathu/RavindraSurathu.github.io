@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ravindra Surathu · Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Ravindra Surathu: Cloud Infrastructure & DevOps Engineer. AWS, Terraform, Ansible, Kubernetes, Linux and Windows Server.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a black-tie monograph. Generous margins, serif display, brass hairlines.
+   Signature motif: a brass seal that stamps. Roles fly in from the right and land with a stamp;
+   their bullets stamp down one by one. Deliberately single dark theme. */
+:root{
+  --ink:#0A0A0B;        /* page */
+  --onyx:#121214;       /* raised surface */
+  --rule:#26262B;       /* hairlines */
+  --ivory:#ECE6DA;      /* primary text */
+  --ash:#9A958C;        /* secondary text */
+  --brass:#C9A86A;      /* the one accent */
+  --brass-deep:#8C7444;
+  --serif:"Instrument Serif","Times New Roman",Georgia,serif;
+  --sans:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--ink);color:var(--ivory);font:400 16px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ink)}
+/* faint grain for depth */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}
+:focus-visible{outline:1px solid var(--brass);outline-offset:4px}
+.wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.label{font:500 11px/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--brass)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;text-wrap:balance;line-height:1}
+h2{font-size:clamp(40px,6vw,72px);letter-spacing:-.01em}
+h2 em{color:var(--brass)}
+section{padding-block:clamp(80px,11vw,140px);overflow-x:clip}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:24px 48px;align-items:end;margin-bottom:clamp(40px,6vw,72px);padding-bottom:28px;border-bottom:1px solid var(--rule)}
+.sec-head p{margin:0;color:var(--ash);max-width:46ch}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}}
+
+/* progress hairline */
+.progress{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:1px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--brass);z-index:30}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(10,10,11,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px}
+.mark{display:flex;align-items:center;gap:12px;text-decoration:none}
+.mark .seal-sm{width:32px;height:32px;border-radius:50%;border:1px solid var(--brass);display:grid;place-items:center;font:italic 15px/1 var(--serif);color:var(--brass)}
+.mark span{font:500 13px/1 var(--sans);letter-spacing:.08em}
+.links{display:flex;gap:26px;font:500 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase}
+.links a{text-decoration:none;color:var(--ash);transition:color .2s}
+.links a:hover{color:var(--ivory)}
+@media (max-width:720px){.links a:not(.keep){display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(64px,10vw,120px) clamp(56px,8vw,96px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:start}
+.hero h1{font-size:clamp(64px,13vw,168px);letter-spacing:-.02em;line-height:.88}
+.hero h1 .l2{display:block;font-style:italic;color:var(--brass);padding-left:clamp(24px,8vw,120px)}
+.hero .role{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:baseline}
+.hero .role b{font:500 clamp(15px,1.6vw,18px)/1.3 var(--sans);letter-spacing:.02em}
+.hero .role span{font:400 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ash)}
+.hero p.lede{max-width:56ch;color:var(--ash);margin:26px 0 0;font-size:17px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border:1px solid var(--rule);border-radius:999px;text-decoration:none;font:500 13px/1 var(--sans);letter-spacing:.04em;transition:border-color .25s,background .25s,color .25s}
+.btn:hover{border-color:var(--brass)}
+.btn.solid{background:var(--ivory);color:var(--ink);border-color:var(--ivory)}
+.btn.solid:hover{background:var(--brass);border-color:var(--brass)}
+/* the big seal */
+.seal{width:clamp(120px,14vw,170px);aspect-ratio:1;position:relative;color:var(--brass)}
+.seal svg{width:100%;height:100%;display:block}
+.seal .spin{transform-origin:50% 50%;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.seal.stamped{animation:bigStamp .9s cubic-bezier(.2,.9,.2,1) both .5s}
+@keyframes bigStamp{0%{transform:scale(2.4) rotate(-14deg);opacity:0}55%{transform:scale(.92) rotate(2deg);opacity:1}75%{transform:scale(1.04) rotate(0)}100%{transform:scale(1)}}
+@media (max-width:640px){.hero-grid{grid-template-columns:1fr}.seal{order:-1;width:110px}}
+
+/* figures */
+.figures{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule)}
+.fig{padding:26px 22px 4px 0;display:grid;gap:8px}
+.fig+.fig{padding-left:22px;border-left:1px solid var(--rule)}
+.fig b{font:400 clamp(44px,5.4vw,64px)/.9 var(--serif);font-variant-numeric:tabular-nums}
+.fig b sup{font-size:.42em;color:var(--brass);margin-left:3px;vertical-align:.95em}
+.fig span{font-size:13px;color:var(--ash);max-width:24ch}
+@media (max-width:760px){.figures{grid-template-columns:repeat(2,minmax(0,1fr))}.fig:nth-child(3){padding-left:0;border-left:0}.fig:nth-child(n+3){border-top:1px solid var(--rule)}}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:48px}
+.about-grid .quote{font:italic 400 clamp(28px,3.4vw,40px)/1.15 var(--serif);color:var(--ivory)}
+.about-grid .quote em{color:var(--brass)}
+.about-grid p{margin:0 0 16px;color:var(--ash);max-width:62ch}
+.about-grid p strong{color:var(--ivory);font-weight:500}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr;gap:24px}}
+
+/* ---------- entries (experience + qualifications) ---------- */
+.entries{display:grid;gap:22px}
+.entry{display:grid;grid-template-columns:200px minmax(0,1fr);gap:32px;padding:34px clamp(20px,3vw,40px);background:var(--onyx);border:1px solid var(--rule);border-radius:4px;position:relative;will-change:transform}
+.entry::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(var(--brass),transparent 80%);opacity:0;transition:opacity .6s .5s}
+.entry.in::before{opacity:1}
+.when{display:grid;gap:10px;align-content:start}
+.when .yrs{font:400 28px/1 var(--serif);color:var(--ivory)}
+.when .yrs i{color:var(--brass)}
+.when .tag{font:500 10px/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ash)}
+.when .now{color:var(--brass)}
+.entry h3{font-size:clamp(28px,3.2vw,38px)}
+.entry .org{margin-top:8px;font:500 12px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.entry .sub{margin:22px 0 10px;font:500 13px/1.4 var(--sans);color:var(--ivory);letter-spacing:.02em}
+.entry .sub small{color:var(--ash);font-weight:400}
+.entry p.note{margin:12px 0 0;color:var(--ash);font-size:15px}
+.stamps{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:11px}
+.stamps li{position:relative;padding-left:34px;color:#CFC9BE;font-size:15px}
+.stamps li::before{content:"";position:absolute;left:2px;top:.42em;width:12px;height:12px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#E6CF9C,var(--brass) 55%,var(--brass-deep));box-shadow:0 0 0 3px rgba(201,168,106,.12)}
+.stamps li::after{content:"";position:absolute;left:2px;top:.42em;width:12px;height:12px;border-radius:50%;border:1px solid var(--brass);opacity:0}
+.stamps li b{color:var(--ivory);font-weight:500}
+@media (max-width:720px){.entry{grid-template-columns:1fr;gap:16px}}
+
+/* fly-in from the right, then stamp */
+.fly.pre{opacity:0;transform:translateX(min(36vw,420px))}
+.fly.in{animation:flyStamp 1s cubic-bezier(.16,.84,.24,1) both}
+@keyframes flyStamp{
+  0%{opacity:0;transform:translateX(min(36vw,420px)) rotate(1.2deg)}
+  58%{opacity:1;transform:translateX(-14px) rotate(-.3deg)}
+  70%{transform:translateX(0) scale(1.025);box-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
+  80%{transform:scale(.988)}
+  100%{transform:none}
+}
+.fly.pre .stamps li{opacity:0}
+.fly.in .stamps li{animation:stampLi .6s cubic-bezier(.2,.9,.25,1) both;animation-delay:calc(.75s + var(--n) * .12s)}
+.fly.in .stamps li::before{animation:seal .6s cubic-bezier(.2,.9,.25,1) both;animation-delay:calc(.75s + var(--n) * .12s)}
+.fly.in .stamps li::after{animation:ring .9s ease-out both;animation-delay:calc(.95s + var(--n) * .12s)}
+@keyframes stampLi{0%{opacity:0;transform:translateX(70px)}55%{opacity:1;transform:translateX(0) translateY(-5px) scale(1.04)}72%{transform:translateY(1px) scale(.99)}100%{opacity:1;transform:none}}
+@keyframes seal{0%{transform:scale(2.6) rotate(-30deg);opacity:0}60%{transform:scale(.8) rotate(0);opacity:1}100%{transform:scale(1)}}
+@keyframes ring{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(3.2)}}
+
+/* ---------- skills ---------- */
+.skills{display:grid;border-top:1px solid var(--rule)}
+.skill-row{display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;padding:22px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.skill-row h4{margin:0;font:italic 400 24px/1.1 var(--serif);color:var(--ivory)}
+.skill-row p{margin:0;color:var(--ash);font-size:15px}
+.skill-row p span{color:var(--ivory)}
+.skill-row p i{font-style:normal;color:var(--brass)}
+@media (max-width:640px){.skill-row{grid-template-columns:1fr;gap:6px}}
+
+/* ---------- work ---------- */
+.works{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.work{padding:32px;border:1px solid var(--rule);border-radius:4px;display:grid;gap:14px;align-content:start;background:var(--onyx);transition:border-color .3s,transform .3s}
+.work:hover{border-color:var(--brass-deep);transform:translateY(-3px)}
+.work .k{font:500 10px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
+.work h3{font-size:30px}
+.work p{margin:0;color:var(--ash);font-size:15px}
+.work .chips{display:flex;flex-wrap:wrap;gap:6px}
+.work .chips span{font:500 11px/1 var(--mono);padding:6px 9px;border:1px solid var(--rule);border-radius:999px;color:#CFC9BE}
+.work a.more{justify-self:start;font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--brass);text-decoration:none;border-bottom:1px solid var(--brass-deep);padding-bottom:4px}
+.work.feature{grid-column:1/-1;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:14px 40px}
+.work.feature .side{display:grid;gap:14px;align-content:start}
+@media (max-width:760px){.works{grid-template-columns:1fr}.work.feature{grid-template-columns:1fr}}
+
+/* ---------- contact ---------- */
+.contact{text-align:left;display:grid;gap:30px}
+.contact h2{font-size:clamp(48px,9vw,120px);line-height:.92}
+.contact h2 em{display:block}
+.c-rows{display:grid;border-top:1px solid var(--rule)}
+.c-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;border-bottom:1px solid var(--rule);text-decoration:none;min-width:0}
+.c-row .k{font:500 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ash);width:110px;flex:none}
+.c-row .v{flex:1;font:400 clamp(20px,2.6vw,30px)/1.2 var(--serif);overflow-wrap:anywhere;user-select:all}
+.c-row .go{color:var(--brass);font-size:18px}
+.c-row button{background:none;border:1px solid var(--rule);color:var(--brass);font:500 11px/1 var(--mono);letter-spacing:.16em;padding:9px 12px;border-radius:999px;cursor:pointer}
+a.c-row:hover .v{color:var(--brass)}
+footer{position:relative;z-index:1;border-top:1px solid var(--rule);padding-block:26px 40px;color:var(--ash);font:400 11px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* simple fade for non-entry blocks below the fold */
+.rise.pre{opacity:0;transform:translateY(24px)}
+.rise.in{opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .fly.pre,.rise.pre,.fly.pre .stamps li{opacity:1!important;transform:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="mark" href="#top"><span class="seal-sm">RS</span><span>RAVINDRA SURATHU</span></a>
+    <div class="links">
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#qualifications">Qualifications</a><a href="#work">Work</a><a class="keep" href="#contact" style="color:var(--brass)">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="label">Portfolio · 2026</div>
+        <h1 style="margin-top:22px">Ravindra<span class="l2">Surathu</span></h1>
+        <div class="role"><b>Cloud Infrastructure &amp; DevOps Engineer</b><span>Hyderabad · Open to anywhere &amp; remote</span></div>
+        <p class="lede">Six years of keeping production systems running, and automating the work that keeps them running. AWS, Ansible, Terraform, Kubernetes, Linux and Windows Server, with deep experience in aviation systems.</p>
+        <div class="cta">
+          <a class="btn solid" href="#experience">See my experience</a>
+          <a class="btn" href="https://github.com/RavindraSurathu" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="btn" href="https://www.linkedin.com/in/ravindra-surathu/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+      <div class="seal stamped" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <defs><path id="circ" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+          <g class="spin">
+            <text font-family="Geist Mono, monospace" font-size="11" fill="currentColor" textLength="458" lengthAdjust="spacing">
+              <textPath href="#circ">CLOUD · DEVOPS · AUTOMATION · RELIABILITY ·</textPath>
+            </text>
+          </g>
+          <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="1"/>
+          <circle cx="100" cy="100" r="56" fill="none" stroke="currentColor" stroke-width="1"/>
+          <text x="100" y="114" text-anchor="middle" font-family="Instrument Serif, serif" font-style="italic" font-size="44" fill="currentColor">RS</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="figures">
+    <div class="fig"><b><span class="count" data-to="6">6</span><sup>+ yrs</sup></b><span>Running Production, UAT, DR and Development environments</span></div>
+    <div class="fig"><b><span class="count" data-to="99.9" data-dec="1">99.9</span><sup>%</sup></b><span>Availability for airport baggage systems</span></div>
+    <div class="fig"><b><span class="count" data-to="50">50</span><sup>+</sup></b><span>Windows servers patched and rebooted through Ansible</span></div>
+    <div class="fig"><b><span class="count" data-to="40">40</span><sup>%</sup></b><span>Less manual operations effort through automation</span></div>
+  </div>
+</div>
+
+<main>
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid rise">
+      <div><div class="label" style="margin-bottom:22px">About</div><div class="quote">I keep systems <em>running</em>, and I automate the work that keeps them that way.</div></div>
+      <div>
+        <p>I started in Windows and IIS administration and grew into the engineer teams call when production is on fire: <strong>vulnerability remediation, certificate lifecycles, load balancers, migrations and root-cause analysis</strong> across Production, UAT, DR and Development.</p>
+        <p>Over time the repetitive work became something to automate. Today I patch fleets of servers with <strong>Ansible and PowerShell</strong>, run workloads on <strong>AWS</strong>, and configure identity with <strong>Microsoft Entra ID</strong>. Most recently I've supported a baggage reconciliation platform used at international airports, where 99.9% uptime is the baseline.</p>
+        <p>Now I'm taking that operational depth into DevOps: <strong>Terraform, Docker, Kubernetes and CI/CD</strong>, proven in my BagTrace project on GitHub.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="label" style="margin-bottom:18px">Experience</div><h2>Six years, <em>three roles</em></h2></div><p>Each role builds on the one before: from web operations to cloud and automation, and now into DevOps.</p></div>
+    <div class="entries">
+      <article class="entry fly">
+        <div class="when"><div class="yrs">2025 <i>–</i> now</div><div class="tag now">Current role</div><div class="tag">Unisys India</div></div>
+        <div>
+          <h3>Senior Maintenance &amp; Support Engineer</h3>
+          <div class="org">Unisys · Aviation client</div>
+          <div class="sub">Airport baggage reconciliation platform <small>· international airports</small></div>
+          <ul class="stamps">
+            <li>Maintain <b>99.9%+ availability</b> for Zafire FirstBag across airport environments</li>
+            <li>Automated Windows patching and controlled reboots for <b>50+ servers</b> with Ansible</li>
+            <li>Designed and configured <b>Microsoft Entra ID SSO</b> with a guest self-registration portal for external airline users</li>
+            <li>Troubleshoot <b>IATA BSM and DELBSM</b> messages between airline DCS and FirstBag</li>
+            <li>Migrated Domain Controllers from Server 2016 to 2022 with <b>zero downtime</b></li>
+            <li>Monitor with Nagios, Site24x7 and Grafana; manage airport devices with SOTI MobiControl</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="entry fly">
+        <div class="when"><div class="yrs">2021 <i>–</i> 2025</div><div class="tag">Unisys India</div></div>
+        <div>
+          <h3>Application Development Engineer</h3>
+          <div class="org">Unisys · Globe Life Insurance &amp; Portakabin</div>
+          <div class="sub">Globe Life Insurance <small>· enterprise web &amp; security</small></div>
+          <ul class="stamps">
+            <li>Ran <b>IIS 6–10 web farms</b> hosting business-critical .NET applications</li>
+            <li>Built <b>GPO-driven automated RDP certificate renewal</b>, closing a recurring vulnerability class</li>
+            <li>Remediated Windows and IIS findings through rescan and closure</li>
+            <li>SME for OpenText RightFax and GlobalSCAPE EFT; Power BI dashboards on ServiceNow data</li>
+          </ul>
+          <div class="sub">Portakabin <small>· AWS hosting</small></div>
+          <ul class="stamps">
+            <li>Supported <b>AWS</b> Windows and Linux estates: EC2, EBS, IAM, security groups, Route 53</li>
+            <li>Administered Linux servers and owned the <b>SSL/TLS lifecycle</b> with zero expiry incidents</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="entry fly">
+        <div class="when"><div class="yrs">2020 <i>–</i> 2021</div><div class="tag">Sonyo Management Consultants</div></div>
+        <div>
+          <h3>Senior Administrator</h3>
+          <div class="org">For Unisys · Globe Life Insurance</div>
+          <ul class="stamps">
+            <li>Led application migrations from <b>IIS 7.5 to 8.5</b> in production web farms</li>
+            <li>Managed <b>F5 BIG-IP</b> load balancing, traffic routing and failover testing</li>
+            <li>Server hardening, patching and daily health checks within SLA</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="qualifications" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="label" style="margin-bottom:18px">Qualifications</div><h2>Education &amp; <em>credentials</em></h2></div><p>An engineering foundation, a master's in computer networks, and continuous hands-on training in cloud and DevOps.</p></div>
+    <div class="entries">
+      <article class="entry fly">
+        <div class="when"><div class="yrs">2018</div><div class="tag">Charles Sturt University</div></div>
+        <div>
+          <h3>Master of Information Technology</h3>
+          <div class="org">Computer Networks · Melbourne</div>
+          <ul class="stamps">
+            <li>Specialised in <b>computer networks</b>: routing, switching and network security</li>
+            <li>Foundation for my later work on DNS, TLS, load balancing and firewalls</li>
+          </ul>
+        </div>
+      </article>
+      <article class="entry fly">
+        <div class="when"><div class="yrs">2015</div><div class="tag">JNTU Kakinada</div></div>
+        <div>
+          <h3>Bachelor of Technology</h3>
+          <div class="org">Electrical &amp; Electronics Engineering</div>
+          <ul class="stamps">
+            <li>Engineering fundamentals in <b>systems, circuits and problem solving</b></li>
+          </ul>
+        </div>
+      </article>
+      <article class="entry fly">
+        <div class="when"><div class="yrs">2023 <i>–</i> now</div><div class="tag now">Ongoing</div></div>
+        <div>
+          <h3>Certifications &amp; training</h3>
+          <div class="org">Cloud · DevOps</div>
+          <ul class="stamps">
+            <li><b>AWS Certified Cloud Practitioner</b>, 2023</li>
+            <li><b>DevOps Engineering Program</b>, Joindevops: Linux, Shell, Git, Docker, Kubernetes, Terraform, Jenkins</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="label" style="margin-bottom:18px">Toolkit</div><h2>What I <em>work with</em></h2></div><p>Brass marks the tools I'm building depth in right now.</p></div>
+    <div class="skills rise">
+      <div class="skill-row"><h4>Cloud &amp; identity</h4><p><span>AWS</span> EC2, IAM, VPC, Route 53, EBS, S3 · <span>Microsoft Entra ID</span> SSO, MFA, Conditional Access</p></div>
+      <div class="skill-row"><h4>Automation &amp; IaC</h4><p><span>Ansible</span> · <span>PowerShell</span> · <span>Bash</span> · <span>Git</span> · <i>Terraform</i> · <i>GitHub Actions</i> · <i>Jenkins</i></p></div>
+      <div class="skill-row"><h4>Containers</h4><p><i>Docker</i> · <i>Kubernetes</i>: StatefulSets, HPA, Ingress, NetworkPolicies</p></div>
+      <div class="skill-row"><h4>Platforms</h4><p><span>Windows Server</span> 2003–2025 · <span>Linux (RHEL)</span> · <span>IIS</span> · <span>Nginx</span> · <span>F5 BIG-IP</span> · <span>Hyper-V</span> · <span>Active Directory</span></p></div>
+      <div class="skill-row"><h4>Reliability</h4><p><span>Grafana</span> · <span>Nagios</span> · <span>Site24x7</span> · <span>Tenable</span> · patch management · RCA · ITIL change</p></div>
+      <div class="skill-row"><h4>Aviation systems</h4><p><span>Zafire FirstBag</span> · IATA BSM/DELBSM · DCS integration · SITA · Amadeus · SOTI MDM</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="work" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="label" style="margin-bottom:18px">Selected work</div><h2>Built &amp; <em>shipped</em></h2></div><p>A DevOps project on GitHub, plus production work from client engagements.</p></div>
+    <div class="works rise">
+      <article class="work feature">
+        <div style="display:grid;gap:14px;align-content:start">
+          <div class="k">DevOps project · GitHub</div>
+          <h3>BagTrace</h3>
+          <p>A 3-tier baggage-tracking app (Nginx, Python API, MySQL) that parses IATA baggage messages, deployed five ways: shell scripts, Ansible roles, Terraform on AWS with a VPC, ALB and bastion, Docker Compose and Kubernetes. Every push runs tests, linting and image builds in GitHub Actions.</p>
+        </div>
+        <div class="side">
+          <div class="chips"><span>Terraform</span><span>Ansible</span><span>Kubernetes</span><span>Docker</span><span>GitHub Actions</span><span>AWS</span></div>
+          <a class="more" href="https://github.com/RavindraSurathu/bagtrace-devops" target="_blank" rel="noopener">View the code ↗</a>
+        </div>
+      </article>
+      <article class="work">
+        <div class="k">Production · Identity</div>
+        <h3>Entra ID SSO &amp; guest portal</h3>
+        <p>Single sign-on for an airline baggage platform, with a self-registration portal so external users onboard without manual admin work.</p>
+        <div class="chips"><span>Entra ID</span><span>B2B</span><span>Conditional Access</span></div>
+      </article>
+      <article class="work">
+        <div class="k">Production · Automation</div>
+        <h3>Patching at scale</h3>
+        <p>Replaced server-by-server Windows patching with Ansible playbooks that patch and safely reboot 50+ servers.</p>
+        <div class="chips"><span>Ansible</span><span>WinRM</span><span>PowerShell</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+  <div class="wrap contact rise">
+    <div class="label">Contact</div>
+    <h2>Let's build something <em>reliable.</em></h2>
+    <div class="c-rows">
+      <div class="c-row"><span class="k">Email</span><span class="v" id="email">ravindra.surathu@hotmail.com</span><button type="button" id="copyBtn">COPY</button></div>
+      <a class="c-row" href="https://www.linkedin.com/in/ravindra-surathu/" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span class="v">in/ravindra-surathu</span><span class="go" aria-hidden="true">↗</span></a>
+      <a class="c-row" href="https://github.com/RavindraSurathu" target="_blank" rel="noopener"><span class="k">GitHub</span><span class="v">RavindraSurathu</span><span class="go" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Ravindra Surathu</span><span>Hyderabad · Open to anywhere &amp; remote</span></div></footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Number each bullet so it stamps after the one before it.
+  document.querySelectorAll('.stamps').forEach(list => {
+    let n = 0;
+    list.closest('.entry').querySelectorAll('.stamps li').forEach(li => li.style.setProperty('--n', n++));
+  });
+
+  // Scroll progress hairline.
+  const bar = document.getElementById('progress');
+  const onScroll = () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+  };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  if (reduce || !('IntersectionObserver' in window)) return;
+
+  // Only elements that start below the fold get a hidden pre-state; everything else is visible at rest.
+  const animated = document.querySelectorAll('.fly, .rise');
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.remove('pre');
+    e.target.classList.add('in');
+    io.unobserve(e.target);
+  }), { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+  animated.forEach(el => {
+    if (el.getBoundingClientRect().top > innerHeight * 0.9) { el.classList.add('pre'); io.observe(el); }
+    else el.classList.add('in');
+  });
+
+  // Count-up figures.
+  const cio = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, to = +el.dataset.to, dec = +(el.dataset.dec || 0), t0 = performance.now();
+    const step = now => { const p = Math.min(1, (now - t0) / 1500); el.textContent = (to * (1 - Math.pow(1 - p, 3))).toFixed(dec); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step); cio.unobserve(el);
+  }), { threshold: 0.6 });
+  document.querySelectorAll('.count').forEach(c => cio.observe(c));
+})();
+
+// Copy email.
+document.getElementById('copyBtn').addEventListener('click', e => {
+  const btn = e.currentTarget, email = document.getElementById('email');
+  const select = () => { const r = document.createRange(); r.selectNodeContents(email); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'SELECTED'; };
+  if (navigator.clipboard) navigator.clipboard.writeText(email.textContent).then(() => { btn.textContent = 'COPIED'; setTimeout(() => btn.textContent = 'COPY', 1600); }).catch(select);
+  else select();
+});
+</script>
+
+</body>
+</html>
