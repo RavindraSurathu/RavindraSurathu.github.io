@@ -312,8 +312,8 @@ right: calc(var(--spacing) * -24);
 .right-\[-8\%\] {
 right: -8%;
 }
-.right-\[-12\%\] {
-right: -12%;
+.right-\[-10\%\] {
+right: -10%;
 }
 .right-\[-16\%\] {
 right: -16%;
